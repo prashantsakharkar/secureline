@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sonar-postgres
+  labels:
+    app: sonar-postgres
+spec:
+  serviceName: "sonar-postgres"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonar-postgres
+  template:
+    metadata:
+      labels:
+        app: sonar-postgres
+    spec:
+      containers:
+      - name: sonar-postgres
+        image: postgres:latest
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: sonarqube-secrets
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: sonarqube-secrets
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: sonarqube-secrets
+              key: POSTGRES_PASSWORD
+        ports:
+        - containerPort: 5432
+          name: sonar-postgres
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonar-postgres
+spec:
+  ports:
+  - port: 5432
+    name: sonar-postgres
