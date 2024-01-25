@@ -454,9 +454,9 @@ postgresql:
   #
   # The bitnami chart enforces the key to be "postgresql-password". This value is only here for historic purposes
   # existingSecretPasswordKey: "postgresql-password"
-  postgresqlUsername: "$postgresqlUsername"
-  postgresqlPassword: "$postgresqlPassword"
-  postgresqlDatabase: "$postgresqlDatabase"
+  postgresqlUsername: $postgresqlUsername
+  postgresqlPassword: $postgresqlPassword
+  postgresqlDatabase: $postgresqlDatabase
   # Specify the TCP port that PostgreSQL should use
   service:
     port: 5432
