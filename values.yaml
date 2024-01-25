@@ -454,9 +454,9 @@ postgresql:
   #
   # The bitnami chart enforces the key to be "postgresql-password". This value is only here for historic purposes
   # existingSecretPasswordKey: "postgresql-password"
-  postgresqlUsername: "sonarUser"
-  postgresqlPassword: "sonarPass"
-  postgresqlDatabase: "sonarDB"
+  postgresqlUsername: "$postgresqlUsername"
+  postgresqlPassword: "$postgresqlPassword"
+  postgresqlDatabase: "$postgresqlDatabase"
   # Specify the TCP port that PostgreSQL should use
   service:
     port: 5432
@@ -553,7 +553,7 @@ extraConfig:
 
 account:
 # The values can be set to define the current and the (new) custom admin passwords at the startup (the username will remain "admin")
-  adminPassword: Password1!
+  adminPassword: $sonarqubepassword
   currentAdminPassword: admin
 # The above values can be also provided by a secret that contains "password" and "currentPassword" as keys. You can generate such a secret in your cluster
 # using "kubectl create secret generic admin-password-secret-name --from-literal=password=admin --from-literal=currentPassword=admin"
