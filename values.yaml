@@ -187,11 +187,11 @@ livenessProbe:
   # sonarWebContext: /
 
 startupProbe:
-  initialDelaySeconds: 30
-  periodSeconds: 10
+  initialDelaySeconds: 60
+  periodSeconds: 20
   failureThreshold: 24
   # Note that timeoutSeconds was not respected before Kubernetes 1.20 for exec probes
-  timeoutSeconds: 1
+  timeoutSeconds: 5
   # If an ingress *path* other than the root (/) is defined, it should be reflected here
   # A trailing "/" must be included
   # deprecated please use sonarWebContext at the value top level
@@ -364,10 +364,10 @@ annotations: {}
 ## Adjust these values to your needs, but make sure that the memory limit is never under 4 GB
 resources:
   limits:
-    cpu: 800m
+    cpu: 1024m
     memory: 4Gi
   requests:
-    cpu: 400m
+    cpu: 600m
     memory: 2Gi
 
 persistence:
