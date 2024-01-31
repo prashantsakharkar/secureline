@@ -58,7 +58,7 @@ tests:
 
 admin:
   user: admin
-  password: Password1!
+  password: $defectdojoUIPassword
   firstName: Administrator
   lastName: User
   mail: admin@defectdojo.local
@@ -153,10 +153,8 @@ celery:
   #extraVolumes: []
 
 django:
-  serviceType: NodePort
-  nodePort: 30001
+  annotations: {}
   service:
-    type: NodePort
     annotations: {}
   affinity: {}
   ingress:
@@ -339,9 +337,9 @@ postgresql:
   image:
     tag: 11.16.0-debian-11-r9
   auth:
-    username: defectdojo
-    password: defectdojo
-    database: defectdojo
+    username: $defectdojopostgresqlUsername
+    password: $defectdojopostgresqlPassword
+    database: $defectdojodatabase
     existingSecret: defectdojo-postgresql-specific
     secretKeys:
       adminPasswordKey: postgresql-postgres-password
@@ -449,8 +447,8 @@ rabbitmq:
   enabled: true
   replicaCount: 1
   auth:
-    password: rabbipassword
-    erlangCookie: rabbitpassword
+    password: $rabbitmqpassword
+    erlangCookie: $rabbitmqpassword
     existingPasswordSecret: defectdojo-rabbitmq-specific
     secretPasswordKey: ""
     existingErlangSecret: defectdojo-rabbitmq-specific
