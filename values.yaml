@@ -364,10 +364,10 @@ annotations: {}
 ## Adjust these values to your needs, but make sure that the memory limit is never under 4 GB
 resources:
   limits:
-    cpu: 400m
+    cpu: 800m
     memory: 4Gi
   requests:
-    cpu: 200m
+    cpu: 400m
     memory: 2Gi
 
 persistence:
