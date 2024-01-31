@@ -92,7 +92,7 @@ celery:
         cpu: 100m
         memory: 128Mi
       limits:
-        cpu: 300m
+        cpu: 2000m
         memory: 256Mi
     tolerations: []
   worker:
@@ -106,7 +106,7 @@ celery:
         cpu: 100m
         memory: 128Mi
       limits:
-        cpu: 300m
+        cpu: 2000m
         memory: 512Mi
     tolerations: []
     app_settings:
@@ -279,7 +279,7 @@ initializer:
       cpu: 100m
       memory: 256Mi
     limits:
-      cpu: 500m
+      cpu: 2000m
       memory: 512Mi
 
   # A list of extra volumes to mount. This
