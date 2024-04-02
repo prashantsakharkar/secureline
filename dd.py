@@ -18,9 +18,9 @@ def test_test():
         # Initialize WebDriver with options
         driver = webdriver.Chrome(options=chrome_options)
         #driver = webdriver.Chrome()
-        command = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | awk -F'\"' '{print $4}'"
+        command = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | grep -o '"sonarqubepassword": "[^"]*' | awk -F'"' '{print $4}'"
         sonarqubepassword = os.popen(command).read().strip()
-        command1 = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | awk -F'\"' '{print $28}'"
+        command1 = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | grep -o '"defectdojoUIPassword": "[^"]*' | awk -F'"' '{print $4}'"
         defectdojoUIPassword = os.popen(command1).read().strip()
         driver.get("http://sakharkar.in:30001/login?next=/")
         driver.set_window_size(1552, 832)
