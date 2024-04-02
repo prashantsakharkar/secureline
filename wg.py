@@ -15,9 +15,9 @@ def test_test2():
 
         # Initialize WebDriver with options
         driver = webdriver.Chrome(options=chrome_options)
-        command = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | grep -o '"webgoatuser": "[^"]*' | awk -F'"' '{print $4}'"
+        command = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | grep -o '\"webgoatuser\": \"[^\"]*' | awk -F'\"' '{print $4}'"
         webgoatuser = os.popen(command).read().strip()
-        command1 = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | grep -o '"webgoatpassword": "[^"]*' | awk -F'"' '{print $4}'"
+        command1 = "aws secretsmanager get-secret-value --secret-id securelinesecret --region us-east-1 --query SecretString --output text | grep -o '\"webgoatpassword\": \"[^\"]*' | awk -F'\"' '{print $4}'"
         webgoatpassword = os.popen(command1).read().strip()
         print(webgoatuser)
         print(webgoatpassword)
