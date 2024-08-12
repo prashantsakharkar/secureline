@@ -335,7 +335,7 @@ mysql:
 postgresql:
   enabled: true
   image:
-    tag: 11.16.0-debian-11-r9
+    tag: 12
   auth:
     username: $defectdojopostgresqlUsername
     password: $defectdojopostgresqlPassword
